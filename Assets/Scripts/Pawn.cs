@@ -7,7 +7,10 @@ public class Pawn : MonoBehaviour
     private Animator anim;
 
     //Meters per second
-    public float moveSpeed;
+    public float moveSpeed = 1;
+
+    //Degrees per second
+    public float rotateSpeed = 360;
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +32,18 @@ public class Pawn : MonoBehaviour
         //Send parameters in to animator
         anim.SetFloat("Right", moveVector.x);
         anim.SetFloat("Forward", moveVector.z);
+    }
+
+    public void RotateToMouse(Vector3 targetPoint)
+    {
+        //Find the rotation that would be looking at that target point
+        //Find the vector to the point
+        Vector3 targetVector = targetPoint - transform.position;
+
+        //Find rotation down that vector
+        Quaternion targetRotation = Quaternion.LookRotation(targetVector, Vector3.up);
+
+        //Change my rotation (slowly) towards that targeted location
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
     }
 }

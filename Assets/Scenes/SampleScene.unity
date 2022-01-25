@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 164533425}
+  playerCamera: {fileID: 963194227}
 --- !u!114 &164533425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  rotateSpeed: 110
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
