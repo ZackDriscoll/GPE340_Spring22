@@ -31,6 +31,7 @@ public class Controller : MonoBehaviour
 
 
         //Rotate player to face mouse
+        RotateTowards();
     }
 
     public void RotateTowards()

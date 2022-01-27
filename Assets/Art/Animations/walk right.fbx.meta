@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: f76e29992dcb7da4c9a6aae114397bc9
+guid: a9b6f09ca0571d14abae6c4ada5824c8
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Idle crouching aiming
+    second: walk right
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,25 +35,25 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle crouching aiming
+      name: walk right
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 63
+      lastFrame: 30
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: 0.61
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
