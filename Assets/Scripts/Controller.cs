@@ -32,8 +32,12 @@ public class Controller : MonoBehaviour
 
         //Rotate player to face mouse
         RotateTowards();
+
+        //Call the crouch function
+        pawn.Crouch();
     }
 
+    //Function to have the player rotate towards the mouse screen position
     public void RotateTowards()
     {
         //Create a plane object (a mathematical representation of all the points in 2D)

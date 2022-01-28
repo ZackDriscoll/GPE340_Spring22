@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
+    //Variable to control the animator object
     private Animator anim;
+
+    //Bool to check if the player is crouching or not
+    [SerializeField] bool isCrouch;
 
     //Meters per second
     public float moveSpeed = 1;
@@ -16,12 +20,6 @@ public class Pawn : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Move(Vector3 moveVector)
@@ -45,5 +43,16 @@ public class Pawn : MonoBehaviour
 
         //Change my rotation (slowly) towards that targeted location
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+    }
+
+    //Function to toggle crouching mechanic
+    public void Crouch()
+    {
+        //As long as the player is pressing the left control or c keys, play the crouch animation
+        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
+        {
+            isCrouch = !isCrouch;
+            anim.SetBool("Crouch", isCrouch);
+        }
     }
 }
