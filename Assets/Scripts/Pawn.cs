@@ -22,6 +22,7 @@ public class Pawn : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    //Move the player using root motion blend tree variables
     public void Move(Vector3 moveVector)
     {
         //Apply speed
