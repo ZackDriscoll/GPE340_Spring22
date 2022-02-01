@@ -23,12 +23,18 @@ public class Controller : MonoBehaviour
         //Send my move comamnd to my pawn
         Vector3 moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
+        //Adjust this move vector, so that it is based on the direction the character is facing
+        //Find out what "local" (Forward/Right) would move me in the world (North/South) that matches my input
+
+        //Should normally be passing in the positive of moveVector, but direction movement was opposite of intended,
+        //so passing in the negative for moveVector fixes that
+        moveVector = pawn.transform.InverseTransformDirection(-moveVector);
+
         //Limit the vector magnitude to 1
         moveVector = Vector3.ClampMagnitude(moveVector, 1.0f);
 
         //Tell the pawn to move
         pawn.Move(moveVector);
-
 
         //Rotate player to face mouse
         RotateTowards();
