@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public Pawn pawn;
     public Camera playerCamera;
@@ -33,6 +33,9 @@ public class Controller : MonoBehaviour
         //Limit the vector magnitude to 1
         moveVector = Vector3.ClampMagnitude(moveVector, 1.0f);
 
+        //Read Fire Button inputs
+        GetButtonInputs();
+
         //Tell the pawn to move
         pawn.Move(moveVector);
 
@@ -41,6 +44,29 @@ public class Controller : MonoBehaviour
 
         //Call the crouch function
         pawn.Crouch();
+    }
+
+    private void GetButtonInputs()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            pawn.weapon.OnPullTrigger.Invoke();
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            pawn.weapon.OnReleaseTrigger.Invoke();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            pawn.weapon.OnAlternateAttackStart.Invoke();
+        }
+
+        if (Input.GetButtonUp("Fire2"))
+        {
+            pawn.weapon.OnAlternateAttackEnd.Invoke();
+        }
     }
 
     //Function to have the player rotate towards the mouse screen position

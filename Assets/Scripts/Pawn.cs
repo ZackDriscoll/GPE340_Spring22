@@ -7,6 +7,9 @@ public class Pawn : MonoBehaviour
     //Variable to control the animator object
     private Animator anim;
 
+    //Weapon script reference
+    public Weapon weapon;
+
     //Bool to check if the player is crouching or not
     [SerializeField] bool isCrouch;
 
@@ -20,6 +23,17 @@ public class Pawn : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+    }
+
+    public void EquipWeapon(GameObject weaponPrefabToEquip)
+    {
+        //TODO: Instantiate the weapon to equip
+
+        //TODO: Move it to the correct mounting point on the player
+
+        //TODO: Make it so the weapon's parent (transform.parent) is the correct part of the player
+
+        //TODO: Set this pawn, so the new weapon is the weapon used by code
     }
 
     //Move the player using root motion blend tree variables
