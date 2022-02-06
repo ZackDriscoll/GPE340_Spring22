@@ -8,11 +8,11 @@ public class CameraFollow : MonoBehaviour
     public Transform playerToFollow;
 
     //Variable offset for the camera
-    [SerializeField]
+    [Header("Camera Movement:"), SerializeField, Tooltip("The amount of offset from the player's position.")]
     protected Vector3 cameraOffset;
 
     //Speed the camera will move at
-    [SerializeField]
+    [SerializeField, Tooltip("The speed the camera travels to keep up with the player.")]
     protected float cameraSpeed;
 
 
@@ -23,7 +23,9 @@ public class CameraFollow : MonoBehaviour
         MoveWithPlayer();
     }
 
-    //Camera will track the player's movement
+    /// <summary>
+    /// Moves the camera's position along with the player
+    /// </summary>
     void MoveWithPlayer()
     {
         //Create a vector for position to be at.
