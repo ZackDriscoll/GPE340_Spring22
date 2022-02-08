@@ -10,6 +10,10 @@ public class Pawn : MonoBehaviour
     //Weapon script reference
     public Weapon weapon;
 
+    [Header("Trasforms")]
+    //Weapon mount point
+    public Transform weaponMountPoint;
+
     //Bool to check if the player is crouching or not
     [SerializeField] bool isCrouch;
 
@@ -25,15 +29,28 @@ public class Pawn : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    public void UnequipWeapon()
+    {
+        //Destroy the equipped weapon
+        Destroy(weapon.gameObject);
+
+        //Make sure the weapon variable is set to null
+        weapon = null;
+    }
+
     public void EquipWeapon(GameObject weaponPrefabToEquip)
     {
-        //TODO: Instantiate the weapon to equip
+        //Unequip the old weapon
+        UnequipWeapon();
 
-        //TODO: Move it to the correct mounting point on the player
+        //Instantiate the weapon to equip
+        GameObject newWeapon = Instantiate(weaponPrefabToEquip, weaponMountPoint.position, weaponMountPoint.rotation);
 
-        //TODO: Make it so the weapon's parent (transform.parent) is the correct part of the player
+        //Make it so the weapon's parent (transform.parent) is the correct part of the player
+        newWeapon.transform.parent = weaponMountPoint;
 
-        //TODO: Set this pawn, so the new weapon is the weapon used by code
+        //Set this pawn, so the new weapon is the weapon used by code
+        weapon = newWeapon.GetComponent<Weapon>();
     }
 
     //Move the player using root motion blend tree variables
