@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class IKController : MonoBehaviour
 {
+    [Header("Components")]
     public Pawn pawn;
+    public Animator anim;
+
+    [Header("Hand Points")]
     private float rightHandWeight = 1.0f;
     private float leftHandWeight = 1.0f;
-
-    public Animator anim;
 
     private void Awake()
     {
@@ -43,6 +45,8 @@ public class IKController : MonoBehaviour
         {
             anim.SetIKPosition(AvatarIKGoal.RightHand, pawn.weapon.RHPoint.position);
             anim.SetIKRotation(AvatarIKGoal.RightHand, pawn.weapon.RHPoint.rotation);
+            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
         }
 
         if (pawn.weapon.LHPoint == null)
@@ -54,15 +58,8 @@ public class IKController : MonoBehaviour
         {
             anim.SetIKPosition(AvatarIKGoal.LeftHand, pawn.weapon.LHPoint.position);
             anim.SetIKRotation(AvatarIKGoal.LeftHand, pawn.weapon.LHPoint.rotation);
+            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
         }
-
-        //Tell the animator to move the hand to the position and rotation
-        
-        
-
-       /* anim.SetIKPositionWeight(AvatarIKGoal.RightHand, rightHandWeight);
-        anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, leftHandWeight);
-        anim.SetIKRotationWeight(AvatarIKGoal.RightHand, rightHandWeight);
-        anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, leftHandWeight);*/
     }
 }

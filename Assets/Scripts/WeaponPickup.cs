@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponPickup : Pickup
 {
-    public Weapon weaponToPickUp;
+    public GameObject weaponToPickUp;
 
     // Start is called before the first frame update
     public override void Start()
@@ -23,9 +23,9 @@ public class WeaponPickup : Pickup
         Pawn otherPawn = other.GetComponent<Pawn>();
         if (otherPawn != null)
         {
-            OnPickup.Invoke();
-            Destroy(gameObject);
+            otherPawn.EquipWeapon(weaponToPickUp);
         }
-        
+
+        base.OnTriggerEnter(other);
     }
 }

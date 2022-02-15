@@ -5,10 +5,8 @@ using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
 {
-    //Header for events
-    [Header("Events")]
-
     //Unity Events for shooting mechanics
+    [Header("Shooting Events")]
     public UnityEvent OnShoot;
     public UnityEvent OnPullTrigger;
     public UnityEvent OnReleaseTrigger;

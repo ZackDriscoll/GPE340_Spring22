@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
+    [Header("Components")]
     //Variable to control the animator object
     private Animator anim;
 
     //Weapon script reference
     public Weapon weapon;
 
-    [Header("Trasforms")]
+    [Header("Transforms")]
     //Weapon mount point
     public Transform weaponMountPoint;
 
+    [Header("Data")]
     //Bool to check if the player is crouching or not
     [SerializeField] bool isCrouch;
 
