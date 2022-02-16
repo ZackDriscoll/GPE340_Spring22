@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         //Move forward
-        rb.MovePosition(transform.position + (transform.forward * moveSpeed * Time.deltaTime));
+        rb.MovePosition(transform.position + (transform.up * moveSpeed * Time.deltaTime));
     }
 
     private void OnTriggerEnter(Collider other)

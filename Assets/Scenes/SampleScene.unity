@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &60546090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60546091}
+  - component: {fileID: 60546092}
+  m_Layer: 0
+  m_Name: Burst Rifle Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60546091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60546090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.663, y: 0.25, z: 4.569}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60546092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60546090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612f0be7499c667448a28288f3ae1331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 1364320557112365242, guid: c4c12d7ccaefc5f48b101b1330740065, type: 3}
+  respawnTime: 1.5
 --- !u!1 &112973425
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f8ac629ddc60747bd6ec8f2b78f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 6318804785873625026, guid: 2079c37c59c5d2f40981880f9af2a7f4, type: 3}
+  playerPawn: {fileID: 2023883358}
 --- !u!4 &420624367
 Transform:
   m_ObjectHideFlags: 0
@@ -449,7 +496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495919007
 GameObject:
@@ -1052,8 +1099,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963798499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1, y: 0.69, z: 3.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.1, y: 1.009, z: 3.75}
+  m_LocalScale: {x: 1.6852351, y: 1.6852351, z: 1.6852351}
   m_Children: []
   m_Father: {fileID: 1934977352}
   m_RootOrder: 9
@@ -1735,6 +1782,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023883358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4658824020861598662, guid: b245e19a05fe5fd4d804c21b3c38ab36, type: 3}
+  m_PrefabInstance: {fileID: 4658824021009084279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4140f8ef165a3014da4d01c00e3904bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &543450653577704261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5128982866289384498, guid: b245e19a05fe5fd4d804c21b3c38ab36, type: 3}

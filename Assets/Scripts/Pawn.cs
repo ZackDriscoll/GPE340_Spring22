@@ -29,6 +29,7 @@ public class Pawn : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        weapon = GetComponent<Weapon>();
     }
 
     public void UnequipWeapon()
@@ -42,17 +43,23 @@ public class Pawn : MonoBehaviour
 
     public void EquipWeapon(GameObject weaponPrefabToEquip)
     {
-        //Unequip the old weapon
-        UnequipWeapon();
+        //Check if the weapon is null before trying to unequip a weapon
+        if (weapon != null)
+        {
+            //Unequip the old weapon
+            UnequipWeapon();
+        }
+        else
+        {
+            //Instantiate the weapon to equip
+            GameObject newWeapon = Instantiate(weaponPrefabToEquip, weaponMountPoint.position, weaponMountPoint.rotation);
 
-        //Instantiate the weapon to equip
-        GameObject newWeapon = Instantiate(weaponPrefabToEquip, weaponMountPoint.position, weaponMountPoint.rotation);
+            //Make it so the weapon's parent (transform.parent) is the correct part of the player
+            newWeapon.transform.parent = weaponMountPoint;
 
-        //Make it so the weapon's parent (transform.parent) is the correct part of the player
-        newWeapon.transform.parent = weaponMountPoint;
-
-        //Set this pawn, so the new weapon is the weapon used by code
-        weapon = newWeapon.GetComponent<Weapon>();
+            //Set this pawn, so the new weapon is the weapon used by code
+            weapon = newWeapon.GetComponent<Weapon>();
+        }
     }
 
     //Move the player using root motion blend tree variables
