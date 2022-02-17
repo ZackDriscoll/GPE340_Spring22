@@ -21,7 +21,7 @@ public class GenericSpawner : MonoBehaviour
     void Update()
     {
         //If the spawned object is already spawned
-        if (spawnedObject == null)
+        if (spawnedObject != null)
         {
             //Do nothing
             return;
