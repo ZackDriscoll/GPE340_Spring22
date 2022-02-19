@@ -13,20 +13,17 @@ public class Health : MonoBehaviour
     public UnityEvent OnTakeDamage;
     public UnityEvent OnDie;
 
+    [Header("Health Bar")]
+    public HealthBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
         //Start at max health
         currentHealth = maxHealth;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(1);
-        }
+        //Set the max health for the health bar
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(float amountOfDamage)
@@ -36,6 +33,9 @@ public class Health : MonoBehaviour
 
         //Subtract health
         currentHealth -= amountOfDamage;
+
+        //Update the health bar
+        healthBar.SetHealth(currentHealth);
 
         //If our health is < 0 we die
         if (currentHealth <= 0)

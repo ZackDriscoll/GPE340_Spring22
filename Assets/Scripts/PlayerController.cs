@@ -67,6 +67,11 @@ public class PlayerController : MonoBehaviour
         {
             pawn.weapon.OnAlternateAttackEnd.Invoke();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pawn.health.TakeDamage(10);
+        }
     }
 
     //Function to have the player rotate towards the mouse screen position

@@ -11,6 +11,9 @@ public class Pawn : MonoBehaviour
     //Weapon script reference
     public Weapon weapon;
 
+    //Health component reference
+    public Health health;
+
     [Header("Transforms")]
     //Weapon mount point
     public Transform weaponMountPoint;
@@ -30,6 +33,7 @@ public class Pawn : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         weapon = GetComponent<Weapon>();
+        health = GetComponent<Health>();
     }
 
     public void UnequipWeapon()
