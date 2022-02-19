@@ -53,8 +53,6 @@ public class Pawn : MonoBehaviour
             //Unequip the old weapon
             UnequipWeapon();
         }
-        else
-        {
             //Instantiate the weapon to equip
             GameObject newWeapon = Instantiate(weaponPrefabToEquip, weaponMountPoint.position, weaponMountPoint.rotation);
 
@@ -63,7 +61,7 @@ public class Pawn : MonoBehaviour
 
             //Set this pawn, so the new weapon is the weapon used by code
             weapon = newWeapon.GetComponent<Weapon>();
-        }
+        
     }
 
     //Move the player using root motion blend tree variables
