@@ -40,6 +40,7 @@ public class BurstRifle : Weapon
         //-- the bullets will do the rest
         if (projectile1 != null)
         {
+            projectile1.layer = gameObject.layer;
             projectileScript1.damageDone = damageDone;
             projectileScript1.lifespan = projectileLifespan;
             projectileScript1.moveSpeed = projectileMoveSpeed;
@@ -47,6 +48,7 @@ public class BurstRifle : Weapon
 
         if (projectile2 != null)
         {
+            projectile2.layer = gameObject.layer;
             projectileScript2.damageDone = damageDone;
             projectileScript2.lifespan = projectileLifespan;
             projectileScript2.moveSpeed = projectileMoveSpeed;
@@ -54,6 +56,7 @@ public class BurstRifle : Weapon
 
         if (projectile3 != null)
         {
+            projectile3.layer = gameObject.layer;
             projectileScript3.damageDone = damageDone;
             projectileScript3.lifespan = projectileLifespan;
             projectileScript3.moveSpeed = projectileMoveSpeed;

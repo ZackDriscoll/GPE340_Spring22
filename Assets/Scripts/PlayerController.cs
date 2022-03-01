@@ -50,7 +50,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            pawn.weapon.OnPullTrigger.Invoke();
+            if (pawn != null)
+            {
+                if (pawn.weapon != null)
+                {
+                    pawn.weapon.OnPullTrigger.Invoke();
+                }
+            }
         }
 
         if (Input.GetButtonUp("Fire1"))

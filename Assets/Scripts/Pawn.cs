@@ -6,7 +6,7 @@ public class Pawn : MonoBehaviour
 {
     [Header("Components")]
     //Variable to control the animator object
-    private Animator anim;
+    [HideInInspector]public Animator anim;
 
     //Weapon script reference
     public Weapon weapon;
@@ -58,6 +58,9 @@ public class Pawn : MonoBehaviour
 
             //Make it so the weapon's parent (transform.parent) is the correct part of the player
             newWeapon.transform.parent = weaponMountPoint;
+
+        //Set weapon layer to the pawn's layer
+        newWeapon.layer = gameObject.layer;
 
             //Set this pawn, so the new weapon is the weapon used by code
             weapon = newWeapon.GetComponent<Weapon>();

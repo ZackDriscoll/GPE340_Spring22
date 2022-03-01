@@ -34,6 +34,7 @@ public class Uzi : Weapon
         //-- the bullets will do the rest
         if (projectile != null)
         {
+            projectile.layer = gameObject.layer;
             projectileScript.damageDone = damageDone;
             projectileScript.lifespan = projectileLifespan;
             projectileScript.moveSpeed = projectileMoveSpeed;
