@@ -53,17 +53,18 @@ public class Pawn : MonoBehaviour
             //Unequip the old weapon
             UnequipWeapon();
         }
-            //Instantiate the weapon to equip
-            GameObject newWeapon = Instantiate(weaponPrefabToEquip, weaponMountPoint.position, weaponMountPoint.rotation);
 
-            //Make it so the weapon's parent (transform.parent) is the correct part of the player
-            newWeapon.transform.parent = weaponMountPoint;
+        //Instantiate the weapon to equip
+        GameObject newWeapon = Instantiate(weaponPrefabToEquip, weaponMountPoint.position, weaponMountPoint.rotation);
+
+        //Make it so the weapon's parent (transform.parent) is the correct part of the player
+        newWeapon.transform.parent = weaponMountPoint;
 
         //Set weapon layer to the pawn's layer
         newWeapon.layer = gameObject.layer;
 
-            //Set this pawn, so the new weapon is the weapon used by code
-            weapon = newWeapon.GetComponent<Weapon>();
+        //Set this pawn, so the new weapon is the weapon used by code
+        weapon = newWeapon.GetComponent<Weapon>();
         
     }
 
