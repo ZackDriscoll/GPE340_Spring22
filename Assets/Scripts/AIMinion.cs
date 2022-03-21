@@ -13,6 +13,9 @@ public class AIMinion : AIController
     public float maxShootingError = 1.0f;
     public float minShootingDistance = 1.0f;
     public float maxShootingDistance = 5.0f;
+    public float fireDelay = 0.0f;
+
+    private float countdown = 0.0f;
 
     public float noLeadDistance = 0.0f; //Use 0% lead modifier
     public float maxLeadDistance = 25.0f; //Use 100% lead modifier
@@ -56,6 +59,10 @@ public class AIMinion : AIController
             {
                 ShootAtPlayer();
             }
+            else
+            {
+
+            }
         }
     }
 
@@ -93,8 +100,19 @@ public class AIMinion : AIController
             //Rotate weapon for error
             pawn.weapon.transform.Rotate(0, shootingError, 0);
 
-            //Shoot
-            pawn.weapon.Shoot();
+            //Countdown our timer
+            countdown -= Time.deltaTime;
+            //If our countdown hits zero--
+            if (countdown <= 0)
+            {
+                //Shoot
+                pawn.weapon.Shoot();
+
+                //Reset timer
+                countdown = fireDelay;
+            }
+
+            
 
             //Rotate back
             pawn.weapon.transform.Rotate(0, -shootingError, 0);
@@ -143,5 +161,10 @@ public class AIMinion : AIController
     {
         //Tell the agent that the animator moved us (so it doesn't have to)
         agent.velocity = pawn.anim.velocity;
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

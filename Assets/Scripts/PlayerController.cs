@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     public Pawn pawn;
     public Camera playerCamera;
 
+    [SerializeField]
+    private GameObject playerRespawner;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,5 +102,10 @@ public class PlayerController : MonoBehaviour
 
         //Rotate towards that point
         pawn.RotateToMouse(raycastPoint);
+    }
+
+    public void Respawn()
+    {
+        transform.position = playerRespawner.transform.position;
     }
 }
