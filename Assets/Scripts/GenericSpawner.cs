@@ -44,12 +44,6 @@ public class GenericSpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        /*Matrix4x4 myNewCoordinateSystem = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-        Gizmos.color = Color.Lerp(Color.red, Color.clear, 0.7f);
-        Gizmos.matrix = myNewCoordinateSystem;
-        Gizmos.DrawRay(Vector3.zero, Vector3.forward);*/
-
-
         Matrix4x4 myNewCoordinateSystem = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
         Gizmos.matrix = myNewCoordinateSystem;
         Gizmos.color = Color.Lerp(Color.red, Color.clear, 0.5f);

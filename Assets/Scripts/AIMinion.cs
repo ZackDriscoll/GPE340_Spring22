@@ -2,26 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class AIMinion : AIController
 {
     private Pawn pawn;
     private NavMeshAgent agent;
-
     private PlayerController player;
 
+    [Header("Shooting Modifiers")]
     public float maxShootingError = 1.0f;
     public float minShootingDistance = 1.0f;
     public float maxShootingDistance = 5.0f;
     public float fireDelay = 0.0f;
+    public float respawnTime;
 
-    private float countdown = 0.0f;
+    private float shootCountdown = 0.0f;
+    private float dieCountdown = 0.0f;
 
     public float noLeadDistance = 0.0f; //Use 0% lead modifier
     public float maxLeadDistance = 25.0f; //Use 100% lead modifier
 
     private Vector3 leadVector; //How far in front of (or otherwise away from) the player to shoot
     public float leadModifier = 1.0f;
+
+    [Header("Event")]
+    public UnityEvent OnRespawn;
 
     public override void Awake()
     {
@@ -58,10 +64,6 @@ public class AIMinion : AIController
             if (pawn.weapon != null)
             {
                 ShootAtPlayer();
-            }
-            else
-            {
-
             }
         }
     }
@@ -101,15 +103,15 @@ public class AIMinion : AIController
             pawn.weapon.transform.Rotate(0, shootingError, 0);
 
             //Countdown our timer
-            countdown -= Time.deltaTime;
+            shootCountdown -= Time.deltaTime;
             //If our countdown hits zero--
-            if (countdown <= 0)
+            if (shootCountdown <= 0)
             {
                 //Shoot
                 pawn.weapon.Shoot();
 
                 //Reset timer
-                countdown = fireDelay;
+                shootCountdown = fireDelay;
             }
 
             
@@ -163,8 +165,15 @@ public class AIMinion : AIController
         agent.velocity = pawn.anim.velocity;
     }
 
+    //Let the minion die
     public void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 2);
+    }
+
+    //Invoke the AI respawn mechanic
+    public void Respawn()
+    {
+        OnRespawn.Invoke();
     }
 }

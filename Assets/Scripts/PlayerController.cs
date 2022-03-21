@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
+        //Reset the player's transform to the respawn point instead of destroying the player
         transform.position = playerRespawner.transform.position;
     }
 }
