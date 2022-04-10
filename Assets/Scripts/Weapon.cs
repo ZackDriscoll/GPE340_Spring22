@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
 {
+    public Sprite weaponImage;
+
     //Unity Events for shooting mechanics
     [Header("Shooting Events")]
     public UnityEvent OnShoot;

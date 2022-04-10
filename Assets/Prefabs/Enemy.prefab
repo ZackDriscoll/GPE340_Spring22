@@ -1511,6 +1511,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3088862358990873504}
+        m_TargetAssemblyTypeName: Pawn, Assembly-CSharp
+        m_MethodName: UnequipWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7766389107205549971}
         m_TargetAssemblyTypeName: AIMinion, Assembly-CSharp
         m_MethodName: Die
@@ -1597,7 +1609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6a51d74d33a924dad325c5c06d193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRagdoll: 0
 --- !u!1 &2937179873931731449
 GameObject:
   m_ObjectHideFlags: 0

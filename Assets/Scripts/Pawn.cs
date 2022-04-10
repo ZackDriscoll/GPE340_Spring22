@@ -14,6 +14,9 @@ public class Pawn : MonoBehaviour
     //Health component reference
     public Health health;
 
+    //Weapon UI Manager
+    public WeaponUIManager weaponUIManager;
+
     [Header("Transforms")]
     //Weapon mount point
     public Transform weaponMountPoint;
@@ -65,6 +68,12 @@ public class Pawn : MonoBehaviour
 
         //Set this pawn, so the new weapon is the weapon used by code
         weapon = newWeapon.GetComponent<Weapon>();
+
+        //Set the weapon image
+        if (weaponUIManager != null)
+        {
+            weaponUIManager.SetWeaponImage(weapon.weaponImage);
+        }
         
     }
 
