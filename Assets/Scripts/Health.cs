@@ -16,8 +16,7 @@ public class Health : MonoBehaviour
     [Header("Health Bar")]
     public HealthBar healthBar;
 
-    [SerializeField]
-    private PlayerController player;
+    [SerializeField] PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -48,14 +47,34 @@ public class Health : MonoBehaviour
         {
             if (player.pawn.health.currentHealth <= 0)
             {
-                //Respawn the player
-                player.Respawn();
+                //If the player has no more lives...
+                if (GameManager.instance.lives <= 0)
+                {
+                    //Activate the game over UI
+                    GameManager.instance.hudManager.gameOverUI.SetActive(true);
+                }
+                else
+                {
+                    //Respawn the player
+                    player.Respawn();
 
-                //Reset the player health
-                player.pawn.health.currentHealth = player.pawn.health.maxHealth;
+                    //Subtract 1 life
+                    GameManager.instance.lives--;
 
-                //Update the health bar on respawn
-                healthBar.SetHealth(currentHealth);
+                    //Update the lives UI text
+                    GameManager.instance.hudManager.SetLifeCountText();
+
+                    //Reset the player health
+                    player.pawn.health.currentHealth = player.pawn.health.maxHealth;
+
+                    //Update the health bar on respawn
+                    healthBar.SetHealth(currentHealth);
+                }
+            }
+            else
+            {
+                GameManager.instance.killCount++;
+                GameManager.instance.hudManager.SetKillCountText();
             }
 
             OnDie.Invoke();

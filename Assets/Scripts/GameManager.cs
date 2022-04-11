@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 //This class represents the game! SO: Everything that is in our game should be accessable from here.
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    public int lives;
+    public int killCount = 0;
+    public int killsToWin = 3;
+    public HUDManager hudManager;
 
     private void Awake()
     {
@@ -23,30 +27,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //Show Main Menu
+        //Make sure the game over UI is deactivated on start
+        hudManager.gameOverUI.SetActive(false);
+
+        //Make sure the timescale is set to 1
+        Time.timeScale = 1;
+
+        //Reset the player's lives value
+        lives = 2;
+
+        //Set the player's lives text
+        hudManager.SetLifeCountText();
+
+        //Set the player's kill count text
+        hudManager.SetKillCountText();
     }
 
-    //StartGame starts when gameplay starts
-    public void StartGame()
+    private void Update()
     {
-        //Set score to zero
-        //Spawn the player
-        //Turn on the enemy spawners
+        //Once the player has killed enough enemies...
+        if (killCount >= killsToWin)
+        {
+            //Activate the game over UI
+            hudManager.gameOverUI.SetActive(true);
+        }
     }
 
-    //EndGame runs when the player is out of lives
-    public void EndGame()
+    //When the player clicks the quit button on the main menu
+    public void QuitGame()
     {
-        //Send a command to stop the controller from controlling the player
-        //Show GameOver Overlay
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Application.Quit();
     }
 }

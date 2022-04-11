@@ -51,35 +51,54 @@ public class PlayerController : MonoBehaviour
 
     private void GetButtonInputs()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (GameManager.instance.hudManager.isPaused)
         {
-            if (pawn != null)
+            //Do nothing
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1"))
             {
-                if (pawn.weapon != null)
+                if (pawn != null)
                 {
-                    pawn.weapon.OnPullTrigger.Invoke();
+                    if (pawn.weapon != null)
+                    {
+                        pawn.weapon.OnPullTrigger.Invoke();
+                    }
                 }
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                pawn.weapon.OnReleaseTrigger.Invoke();
+            }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                pawn.weapon.OnAlternateAttackStart.Invoke();
+            }
+
+            if (Input.GetButtonUp("Fire2"))
+            {
+                pawn.weapon.OnAlternateAttackEnd.Invoke();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                pawn.health.TakeDamage(10);
             }
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            pawn.weapon.OnReleaseTrigger.Invoke();
-        }
-
-        if (Input.GetButtonDown("Fire2"))
-        {
-            pawn.weapon.OnAlternateAttackStart.Invoke();
-        }
-
-        if (Input.GetButtonUp("Fire2"))
-        {
-            pawn.weapon.OnAlternateAttackEnd.Invoke();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            pawn.health.TakeDamage(10);
+            if (GameManager.instance.hudManager.isPaused)
+            {
+                GameManager.instance.hudManager.ResumeGame();
+            }
+            else
+            {
+                GameManager.instance.hudManager.PauseGame();
+            }            
         }
     }
 
