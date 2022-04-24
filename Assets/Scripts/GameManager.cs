@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
         {
             //Activate the game over UI
             hudManager.gameOverUI.SetActive(true);
+
+            //Pause the game in the background by setting the timescale to 0
+            Time.timeScale = 0;
         }
     }
 
